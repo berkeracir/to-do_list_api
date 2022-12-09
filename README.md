@@ -14,7 +14,7 @@ pip install flask flask_sqlalchemy flask-restx flask_login
 
 How to run:
 ```
-flask --app .\project\ run
+flask --app .\main.py run
 ```
 
 https://www.imaginarycloud.com/blog/flask-python/
