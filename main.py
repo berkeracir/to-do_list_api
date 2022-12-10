@@ -42,6 +42,9 @@ def load_user(user_id):
 from auth import api as auth_ns
 api.add_namespace(auth_ns)
 
+from todo_lists import api as todo_lists_ns
+api.add_namespace(todo_lists_ns)
+
 
 if __name__ == '__main__':
 	app.run()

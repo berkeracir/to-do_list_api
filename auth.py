@@ -1,10 +1,10 @@
-from flask import request
 from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_restx import Resource, fields, Namespace
 
 from main import db
 from models import User
+
 
 api = Namespace(name="auth", description="Authorization")
 
@@ -16,7 +16,7 @@ user_api_model = api.model('User', {
 change_password_api_model = api.model('Change Password', {
 	'password': fields.String(required=True, description="User password", default="password"),
 	'new_password': fields.String(required=True, description="User new password", default="new_password")
-})
+})	# TODO: Should parameters be used? 
 
 @api.route('/login')
 class Login(Resource):
@@ -82,7 +82,7 @@ class ChangePassword(Resource):
 	@api.response(200, "Password Changed Successfully")
 	@api.response(404, "Wrong password!")
 	@login_required
-	def post(self):
+	def put(self):
 		'''Changes authorized user's password'''
 
 		password = api.payload['password']
