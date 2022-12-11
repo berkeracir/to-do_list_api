@@ -13,7 +13,7 @@ user_api_model = api.model('User', {
 	'password': fields.String(required=True, description="User password", default="password")
 })
 
-change_password_api_model = api.model('Change Password', {
+change_password_api_model = api.model('User Change Password', {
 	'password': fields.String(required=True, description="User password", default="password"),
 	'new_password': fields.String(required=True, description="User new password", default="new_password")
 })	# TODO: Should parameters be used? 
@@ -80,6 +80,7 @@ class ChangePassword(Resource):
 
 	@api.expect(change_password_api_model)
 	@api.response(200, "Password Changed Successfully")
+	@api.response(401, "Unauthorized")
 	@api.response(404, "Wrong password!")
 	@login_required
 	def put(self):
