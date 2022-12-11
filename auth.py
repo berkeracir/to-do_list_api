@@ -95,7 +95,7 @@ class ChangePassword(Resource):
 		
 		# take the user-supplied password, hash it, and compare it to the hashed password in the database
 		if current_user.username != username or not check_password_hash(current_user.password, password):
-			api.abort(404, "Wrong password!")
+			api.abort(404, "Wrong Username/Password")
 
 		# change the password
 		current_user.password = generate_password_hash(new_password, method='sha256')

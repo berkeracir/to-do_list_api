@@ -1,0 +1,1905 @@
+{
+	"id": "3b4af967-4bba-4203-98a5-a7f4c0465573",
+	"name": "To-Do List API - End Point Tests",
+	"timestamp": "2022-12-11T18:18:12.742Z",
+	"collection_id": "5844061-f64cb658-dedc-4f8a-9338-6eea2388ad3c",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 91,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "276aca85-0a66-4bd7-b6da-97a9e47c2b5f",
+			"name": "Logout if already logged in",
+			"url": "http://127.0.0.1:5000/auth/logout",
+			"time": 11,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				11
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "edcf0841-d4ac-4e73-8b63-25b64d02ac0e",
+			"name": "Login without signing up",
+			"url": "http://127.0.0.1:5000/auth/login",
+			"time": 25,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "233a1cc5-dda1-402e-865a-cbcb89d6c741",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/auth/change_password",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "8a94f8f4-a2da-4ada-9411-463451610fec",
+			"name": "Signup successfully",
+			"url": "http://127.0.0.1:5000/auth/signup",
+			"time": 18,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status code is 201": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				18
+			],
+			"allTests": [
+				{
+					"Status code is 201": true
+				}
+			]
+		},
+		{
+			"id": "68d078b5-c276-4f99-8fe2-67c56404b30f",
+			"name": "Signup again with same username",
+			"url": "http://127.0.0.1:5000/auth/signup",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "74026722-f484-4e5f-8f14-2a2b0151419a",
+			"name": "Signup with empty username",
+			"url": "http://127.0.0.1:5000/auth/signup",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "d820a1a0-d532-441b-8706-9578280c94be",
+			"name": "Login with wrong username",
+			"url": "http://127.0.0.1:5000/auth/login",
+			"time": 13,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "f65ec1eb-79d1-45dd-b547-a93d900ae752",
+			"name": "Login with wrong password",
+			"url": "http://127.0.0.1:5000/auth/login",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "9fb6c568-691f-46f9-b435-51d0c16dfdfe",
+			"name": "Login successfully",
+			"url": "http://127.0.0.1:5000/auth/login",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "3f0871fe-4385-44da-abac-70e153787ff0",
+			"name": "Change password successfully",
+			"url": "http://127.0.0.1:5000/auth/change_password",
+			"time": 22,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "f4cd0715-a791-4c15-a0cc-e643b86c3c94",
+			"name": "Change password back to initial password",
+			"url": "http://127.0.0.1:5000/auth/change_password",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				21
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "8e7e20ed-3316-4b4f-a464-908eccef65c4",
+			"name": "Change password with wrong username",
+			"url": "http://127.0.0.1:5000/auth/change_password",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "cd6600d2-4d7b-4856-abbc-3b282d744c6d",
+			"name": "Change password with wrong password",
+			"url": "http://127.0.0.1:5000/auth/change_password",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "47e81d91-bf4b-4c66-875a-6131016a1b50",
+			"name": "Logout",
+			"url": "http://127.0.0.1:5000/auth/logout",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "06181174-65c4-4803-b4e3-0849677c3452",
+			"name": "Logout while not authorized",
+			"url": "http://127.0.0.1:5000/auth/logout",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "d283731f-dee3-4826-8a82-1df4032af433",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_lists",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "a6bde976-0c0b-4052-87ac-9bc4b5527238",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_lists",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "dc3fbffe-953e-419b-b20b-7a05b3441839",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_lists",
+			"time": 6,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "212eaced-231b-42a5-8dda-496888cdff10",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_lists",
+			"time": 7,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "fb91ec7d-0805-4604-9fd5-2763b59f0175",
+			"name": "Signup",
+			"url": "http://127.0.0.1:5000/auth/signup",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "97b51811-5e66-4e73-b50c-72abdaaabcdb",
+			"name": "Login",
+			"url": "http://127.0.0.1:5000/auth/login",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "4c5bbaf9-34d7-44c9-917e-e5b3210e073e",
+			"name": "Get To-Do Lists",
+			"url": "http://127.0.0.1:5000/todo_lists",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Number of To-Do Lists returned = 0": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Number of To-Do Lists returned = 0": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Number of To-Do Lists returned = 0": true
+				}
+			]
+		},
+		{
+			"id": "105c663b-55f8-46f9-b650-fe69547f4ff5",
+			"name": "Create a To-Do List",
+			"url": "http://127.0.0.1:5000/todo_lists?name=To-Do%20List%201",
+			"time": 25,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"To-Do List ID and Name Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List ID and Name Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"To-Do List ID and Name Check": true
+				}
+			]
+		},
+		{
+			"id": "97bfb11f-de58-4feb-be63-7f05f1a2580d",
+			"name": "Create another To-Do List",
+			"url": "http://127.0.0.1:5000/todo_lists?name=To-Do%20List%201",
+			"time": 22,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"To-Do List Name Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List Name Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"To-Do List Name Check": true
+				}
+			]
+		},
+		{
+			"id": "90f74ff1-d391-4b0c-8c7b-0e6c5e2a2ddf",
+			"name": "Get To-Do Lists",
+			"url": "http://127.0.0.1:5000/todo_lists",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Number of To-Do Lists returned = 2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Number of To-Do Lists returned = 2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Number of To-Do Lists returned = 2": true
+				}
+			]
+		},
+		{
+			"id": "4113a7bd-dffa-4017-becf-0831562860cd",
+			"name": "Change To-Do List with wrong ID",
+			"url": "http://127.0.0.1:5000/todo_lists?id=3&name=TO%20BE%20DELETED",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "7bbc50bb-0d25-46e0-8fb3-789813f3a76a",
+			"name": "Change To-Do List",
+			"url": "http://127.0.0.1:5000/todo_lists?id=2&name=TO%20BE%20DELETED",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"To-Do List ID and Name Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List ID and Name Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"To-Do List ID and Name Check": true
+				}
+			]
+		},
+		{
+			"id": "17515398-1179-44f2-904b-1e7da52a4e64",
+			"name": "Delete To-Do List with wrong ID",
+			"url": "http://127.0.0.1:5000/todo_lists?id=3",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "d64bcb7d-670c-45ad-a2bf-65b8114bd2a6",
+			"name": "Delete To-Do List",
+			"url": "http://127.0.0.1:5000/todo_lists?id=2",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "d371d4e2-39d0-4f1d-9291-c4f164e6f06a",
+			"name": "Logout",
+			"url": "http://127.0.0.1:5000/auth/logout",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "dab4b14e-b78e-4b73-bedc-68839cdc86d6",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_list1",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "1b86741d-a770-4bf3-828f-d3035d3d74c3",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_list1",
+			"time": 5,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "e156eafe-6ae6-4938-9ea6-739ccaeaaa2a",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_list1",
+			"time": 11,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "2195d76b-c864-4861-93c1-a5cc761c68b2",
+			"name": "Try to access authorized end points without authorization",
+			"url": "http://127.0.0.1:5000/todo_list1",
+			"time": 12,
+			"responseCode": {
+				"code": 401,
+				"name": "UNAUTHORIZED"
+			},
+			"tests": {
+				"Status code is 401": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 401": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 401": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "cdbc0f9c-d134-4265-b1ec-bf8efa5fea69",
+			"name": "Signup",
+			"url": "http://127.0.0.1:5000/auth/signup",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6fcca5f9-a235-460b-a610-eac9f5e83702",
+			"name": "Login",
+			"url": "http://127.0.0.1:5000/auth/login",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		},
+		{
+			"id": "2a06110f-de2e-4e12-8dca-c0bf042a3c06",
+			"name": "Create a To-Do List",
+			"url": "http://127.0.0.1:5000/todo_lists?name=Test%20To-Do%20List",
+			"time": 23,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"To-Do List ID and Name Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List ID and Name Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"To-Do List ID and Name Check": true
+				}
+			]
+		},
+		{
+			"id": "b94cd907-3003-4926-91c4-ea1294c1760a",
+			"name": "Get To-Do List Items with wrong To-Do List ID",
+			"url": "http://127.0.0.1:5000/todo_list9999",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "c16fbbc5-70ed-46db-991d-4c5bd5260421",
+			"name": "Get To-Do List Items",
+			"url": "http://127.0.0.1:5000/todo_list1",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Number of To-Do Lists returned = 0": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Number of To-Do Lists returned = 0": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Number of To-Do Lists returned = 0": true
+				}
+			]
+		},
+		{
+			"id": "f698386c-4aae-45a2-aab6-db4e5f04cf40",
+			"name": "Create a To-Do List Item with wrong To-Do List ID",
+			"url": "http://127.0.0.1:5000/todo_list9999?text=Task%201&completed=false",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "7cce9ddc-c31c-4ee5-bb6e-3cca65765da8",
+			"name": "Create a To-Do List Item",
+			"url": "http://127.0.0.1:5000/todo_list1?text=Task%201&completed=false",
+			"time": 26,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"To-Do List Item Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List Item Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"To-Do List Item Check": true
+				}
+			]
+		},
+		{
+			"id": "611c253e-db88-4398-9b43-1cbae84acb5f",
+			"name": "Create a To-Do List Item",
+			"url": "http://127.0.0.1:5000/todo_list1?text=Task%202&completed=true",
+			"time": 25,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"To-Do List Item Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List Item Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"To-Do List Item Check": true
+				}
+			]
+		},
+		{
+			"id": "f33ef8cb-3f7a-48dc-839d-e888eaad93be",
+			"name": "Get To-Do List Items",
+			"url": "http://127.0.0.1:5000/todo_list1",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Number of To-Do Lists returned = 2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Number of To-Do Lists returned = 2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Number of To-Do Lists returned = 2": true
+				}
+			]
+		},
+		{
+			"id": "366bc974-1dda-45a3-8f03-73fd5779e1fa",
+			"name": "Create a To-Do List Item",
+			"url": "http://127.0.0.1:5000/todo_list1?text=Task%203&completed=false",
+			"time": 23,
+			"responseCode": {
+				"code": 201,
+				"name": "CREATED"
+			},
+			"tests": {
+				"Status code is 201": true,
+				"To-Do List Item Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 201": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List Item Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				23
+			],
+			"allTests": [
+				{
+					"Status code is 201": true,
+					"To-Do List Item Check": true
+				}
+			]
+		},
+		{
+			"id": "63ed9b48-58c1-42c4-992d-2835de516e56",
+			"name": "Edit a To-Do List Item with wrong To-Do List ID",
+			"url": "http://127.0.0.1:5000/todo_list9999?id=3&text=TO%20BE%20DELETED&completed=false",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "16dbd239-fc33-4cf2-bea4-abc905788704",
+			"name": "Edit a To-Do List Item with wrong ID",
+			"url": "http://127.0.0.1:5000/todo_list1?id=999&text=TO%20BE%20DELETED&completed=false",
+			"time": 14,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "c14b54e7-cbda-4d30-b1c1-900d45eaf753",
+			"name": "Edit a To-Do List Item",
+			"url": "http://127.0.0.1:5000/todo_list1?id=3&completed=true",
+			"time": 29,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"To-Do List Item Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List Item Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"To-Do List Item Check": true
+				}
+			]
+		},
+		{
+			"id": "cda2c416-b041-4a07-9f73-bd99afd9d3b9",
+			"name": "Edit a To-Do List Item",
+			"url": "http://127.0.0.1:5000/todo_list1?id=3&text=TO%20BE%20DELETED",
+			"time": 29,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"To-Do List Item Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List Item Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				29
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"To-Do List Item Check": true
+				}
+			]
+		},
+		{
+			"id": "94a3007e-1c6b-46da-8833-aa5f0b18f76e",
+			"name": "Edit a To-Do List Item but do not change the Item data",
+			"url": "http://127.0.0.1:5000/todo_list1?id=3",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"To-Do List Item Check": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"To-Do List Item Check": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"To-Do List Item Check": true
+				}
+			]
+		},
+		{
+			"id": "156248d0-480b-4fc5-b6f8-2b21701465c5",
+			"name": "Delete a To-Do List Item with wrong To-Do List ID",
+			"url": "http://127.0.0.1:5000/todo_list9999?id=3",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "62ab3091-737a-4951-b8c5-e56232f641c9",
+			"name": "Delete a To-Do List Item with wrong ID",
+			"url": "http://127.0.0.1:5000/todo_list1?id=999",
+			"time": 11,
+			"responseCode": {
+				"code": 404,
+				"name": "NOT FOUND"
+			},
+			"tests": {
+				"Status code is 404": true,
+				"Body matches string": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body matches string": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status code is 404": true,
+					"Body matches string": true
+				}
+			]
+		},
+		{
+			"id": "64295739-661e-4fa8-84db-781d6b578ccd",
+			"name": "Delete a To-Do List Item",
+			"url": "http://127.0.0.1:5000/todo_list1?id=3",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 404": true
+			},
+			"testPassFailCounts": {
+				"Status code is 404": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 404": true
+				}
+			]
+		},
+		{
+			"id": "d15a1e92-bdee-4e75-b023-ec7bcea613d2",
+			"name": "Get To-Do List Items",
+			"url": "http://127.0.0.1:5000/todo_list1",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Number of To-Do Lists returned = 2": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Number of To-Do Lists returned = 2": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Number of To-Do Lists returned = 2": true
+				}
+			]
+		},
+		{
+			"id": "0362b7e3-e344-4d6d-b6a2-9e6bbe354bce",
+			"name": "Logout",
+			"url": "http://127.0.0.1:5000/auth/logout",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 678,
+	"collection": {
+		"requests": [
+			{
+				"id": "276aca85-0a66-4bd7-b6da-97a9e47c2b5f",
+				"method": "GET"
+			},
+			{
+				"id": "edcf0841-d4ac-4e73-8b63-25b64d02ac0e",
+				"method": "POST"
+			},
+			{
+				"id": "233a1cc5-dda1-402e-865a-cbcb89d6c741",
+				"method": "PUT"
+			},
+			{
+				"id": "8a94f8f4-a2da-4ada-9411-463451610fec",
+				"method": "POST"
+			},
+			{
+				"id": "68d078b5-c276-4f99-8fe2-67c56404b30f",
+				"method": "POST"
+			},
+			{
+				"id": "74026722-f484-4e5f-8f14-2a2b0151419a",
+				"method": "POST"
+			},
+			{
+				"id": "d820a1a0-d532-441b-8706-9578280c94be",
+				"method": "POST"
+			},
+			{
+				"id": "f65ec1eb-79d1-45dd-b547-a93d900ae752",
+				"method": "POST"
+			},
+			{
+				"id": "9fb6c568-691f-46f9-b435-51d0c16dfdfe",
+				"method": "POST"
+			},
+			{
+				"id": "3f0871fe-4385-44da-abac-70e153787ff0",
+				"method": "PUT"
+			},
+			{
+				"id": "f4cd0715-a791-4c15-a0cc-e643b86c3c94",
+				"method": "PUT"
+			},
+			{
+				"id": "8e7e20ed-3316-4b4f-a464-908eccef65c4",
+				"method": "PUT"
+			},
+			{
+				"id": "cd6600d2-4d7b-4856-abbc-3b282d744c6d",
+				"method": "PUT"
+			},
+			{
+				"id": "47e81d91-bf4b-4c66-875a-6131016a1b50",
+				"method": "GET"
+			},
+			{
+				"id": "06181174-65c4-4803-b4e3-0849677c3452",
+				"method": "GET"
+			},
+			{
+				"id": "d283731f-dee3-4826-8a82-1df4032af433",
+				"method": "GET"
+			},
+			{
+				"id": "a6bde976-0c0b-4052-87ac-9bc4b5527238",
+				"method": "POST"
+			},
+			{
+				"id": "dc3fbffe-953e-419b-b20b-7a05b3441839",
+				"method": "PUT"
+			},
+			{
+				"id": "212eaced-231b-42a5-8dda-496888cdff10",
+				"method": "DELETE"
+			},
+			{
+				"id": "fb91ec7d-0805-4604-9fd5-2763b59f0175",
+				"method": "POST"
+			},
+			{
+				"id": "97b51811-5e66-4e73-b50c-72abdaaabcdb",
+				"method": "POST"
+			},
+			{
+				"id": "4c5bbaf9-34d7-44c9-917e-e5b3210e073e",
+				"method": "GET"
+			},
+			{
+				"id": "105c663b-55f8-46f9-b650-fe69547f4ff5",
+				"method": "POST"
+			},
+			{
+				"id": "97bfb11f-de58-4feb-be63-7f05f1a2580d",
+				"method": "POST"
+			},
+			{
+				"id": "90f74ff1-d391-4b0c-8c7b-0e6c5e2a2ddf",
+				"method": "GET"
+			},
+			{
+				"id": "4113a7bd-dffa-4017-becf-0831562860cd",
+				"method": "PUT"
+			},
+			{
+				"id": "7bbc50bb-0d25-46e0-8fb3-789813f3a76a",
+				"method": "PUT"
+			},
+			{
+				"id": "17515398-1179-44f2-904b-1e7da52a4e64",
+				"method": "DELETE"
+			},
+			{
+				"id": "d64bcb7d-670c-45ad-a2bf-65b8114bd2a6",
+				"method": "DELETE"
+			},
+			{
+				"id": "d371d4e2-39d0-4f1d-9291-c4f164e6f06a",
+				"method": "GET"
+			},
+			{
+				"id": "dab4b14e-b78e-4b73-bedc-68839cdc86d6",
+				"method": "GET"
+			},
+			{
+				"id": "1b86741d-a770-4bf3-828f-d3035d3d74c3",
+				"method": "POST"
+			},
+			{
+				"id": "e156eafe-6ae6-4938-9ea6-739ccaeaaa2a",
+				"method": "PUT"
+			},
+			{
+				"id": "2195d76b-c864-4861-93c1-a5cc761c68b2",
+				"method": "DELETE"
+			},
+			{
+				"id": "cdbc0f9c-d134-4265-b1ec-bf8efa5fea69",
+				"method": "POST"
+			},
+			{
+				"id": "6fcca5f9-a235-460b-a610-eac9f5e83702",
+				"method": "POST"
+			},
+			{
+				"id": "2a06110f-de2e-4e12-8dca-c0bf042a3c06",
+				"method": "POST"
+			},
+			{
+				"id": "b94cd907-3003-4926-91c4-ea1294c1760a",
+				"method": "GET"
+			},
+			{
+				"id": "c16fbbc5-70ed-46db-991d-4c5bd5260421",
+				"method": "GET"
+			},
+			{
+				"id": "f698386c-4aae-45a2-aab6-db4e5f04cf40",
+				"method": "POST"
+			},
+			{
+				"id": "7cce9ddc-c31c-4ee5-bb6e-3cca65765da8",
+				"method": "POST"
+			},
+			{
+				"id": "611c253e-db88-4398-9b43-1cbae84acb5f",
+				"method": "POST"
+			},
+			{
+				"id": "f33ef8cb-3f7a-48dc-839d-e888eaad93be",
+				"method": "GET"
+			},
+			{
+				"id": "366bc974-1dda-45a3-8f03-73fd5779e1fa",
+				"method": "POST"
+			},
+			{
+				"id": "63ed9b48-58c1-42c4-992d-2835de516e56",
+				"method": "PUT"
+			},
+			{
+				"id": "16dbd239-fc33-4cf2-bea4-abc905788704",
+				"method": "PUT"
+			},
+			{
+				"id": "c14b54e7-cbda-4d30-b1c1-900d45eaf753",
+				"method": "PUT"
+			},
+			{
+				"id": "cda2c416-b041-4a07-9f73-bd99afd9d3b9",
+				"method": "PUT"
+			},
+			{
+				"id": "94a3007e-1c6b-46da-8833-aa5f0b18f76e",
+				"method": "PUT"
+			},
+			{
+				"id": "156248d0-480b-4fc5-b6f8-2b21701465c5",
+				"method": "DELETE"
+			},
+			{
+				"id": "62ab3091-737a-4951-b8c5-e56232f641c9",
+				"method": "DELETE"
+			},
+			{
+				"id": "64295739-661e-4fa8-84db-781d6b578ccd",
+				"method": "DELETE"
+			},
+			{
+				"id": "d15a1e92-bdee-4e75-b023-ec7bcea613d2",
+				"method": "GET"
+			},
+			{
+				"id": "0362b7e3-e344-4d6d-b6a2-9e6bbe354bce",
+				"method": "GET"
+			}
+		]
+	}
+}
