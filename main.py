@@ -45,6 +45,9 @@ api.add_namespace(auth_ns)
 from todo_lists import api as todo_lists_ns
 api.add_namespace(todo_lists_ns)
 
+from todo_list import api as todo_list_ns
+api.add_namespace(todo_list_ns)
+
 
 if __name__ == '__main__':
 	app.run()

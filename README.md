@@ -14,13 +14,15 @@ Install dependencies while virtual environment is active:
 pip install flask flask_sqlalchemy flask-restx flask_login 
 ```
 
-How to run:
+How to run (while virtual environment is active):
 
 ```
 flask --app .\main.py run
 ```
 
-<https://www.imaginarycloud.com/blog/flask-python/>
-<https://www.digitalocean.com/community/tutorials/how-to-use-flask-sqlalchemy-to-interact-with-databases-in-a-flask-application>
-<https://abhtri.medium.com/flask-api-documentation-using-flask-restx-swagger-for-flask-84be13d70e0>
-<https://behainguyen.wordpress.com/2022/07/12/python-flask-restx-and-the-swagger-ui-automatic-documentation/>
+Useful links:
+
+* [Flask](https://flask.palletsprojects.com/en/2.2.x/)
+* [Flask-SQLAlchemy](https://flask-sqlalchemy.palletsprojects.com/en/3.0.x/)
+* [Flask-Login](https://flask-login.readthedocs.io/en/latest/)
+* [Flask-RESTX](https://flask-restx.readthedocs.io/en/latest/index.html)

@@ -2,7 +2,7 @@ from flask_login import login_required, current_user
 from flask_restx import Resource, fields, Namespace
 
 from main import db
-from models import User, List
+from models import List
 
 
 api = Namespace(name="todo_lists", description="Management of To-Do Lists")
@@ -24,15 +24,17 @@ delete_parser = api.parser()
 delete_parser.add_argument('id', required=True, type=int, help="ID of To-Do List")
 
 
-@api.route('/')
+@api.route('')
+@api.response(401, "Unauthorized")
 class ToDoLists(Resource):
-	'''Shows all To-Do Lists of authorized user, and gives the user ability of creating, updating, deleting new To-Do Lists'''
+	'''
+	Shows all To-Do Lists of authorized user, and gives the ability of creating, updating, deleting new To-Do Lists to the user
+	'''
 
 	@api.marshal_list_with(api_model, code=200)
-	@api.response(200, "Got To-Do Lists Successfully")
-	@api.response(401, "Unauthorized")
+	@api.response(200, "To-Do Lists Retrieved Successfully")
 	@login_required
-	def get(self):
+	def get(self):	# TODO: get To-Do Lists together with their own To-Do List Items
 		'''Gets all To-Do Lists of authorized user'''
 
 		todo_lists = List.query.filter_by(user_id=current_user.id).all()
@@ -41,7 +43,6 @@ class ToDoLists(Resource):
 	@api.expect(post_parser)
 	@api.marshal_with(api_model, code=201)
 	@api.response(201, "To-Do List Created Successfully")
-	@api.response(401, "Unauthorized")
 	@login_required
 	def post(self):
 		'''Creates a new To-Do List with given name'''
@@ -57,22 +58,21 @@ class ToDoLists(Resource):
 	@api.expect(put_parser)
 	@api.marshal_with(api_model, code=200)
 	@api.response(200, "To-Do List Updated Successfully")
-	@api.response(401, "Unauthorized")
 	@api.response(404, "Wrong To-Do List ID")
 	@login_required
 	def put(self):
 		'''Updates the name of To-Do List with given ID'''
 
 		args = put_parser.parse_args()
-		id = args['id']
-		new_name = args['name']
+		id, new_name = args['id'], args['name']
 
-		todo_list = List.query.filter_by(id=id, user_id=current_user.id).first()	# if this returns a To-Do List, then given id exists in database
+		# if this returns a To-Do List, then given id exists in database
+		todo_list = List.query.filter_by(id=id, user_id=current_user.id).first()
 
 		if not todo_list:
 			api.abort(404, "Wrong To-Do List ID")
 
-		# change the name
+		# update the name
 		todo_list.name = new_name
 
 		# update the To-Do List information in the database
@@ -81,10 +81,8 @@ class ToDoLists(Resource):
 
 		return todo_list.serialize(), 200
 
-
 	@api.expect(delete_parser)
 	@api.response(200, "To-Do List Deleted Successfully")
-	@api.response(401, "Unauthorized")
 	@api.response(404, "Wrong To-Do List ID")
 	@login_required
 	def delete(self):
@@ -93,12 +91,13 @@ class ToDoLists(Resource):
 		args = delete_parser.parse_args()
 		id = args['id']
 
-		todo_list = List.query.filter_by(id=id, user_id=current_user.id).first()	# if this returns a To-Do List, then given id exists in database
+		# if this returns a To-Do List, then given id exists in database
+		todo_list = List.query.filter_by(id=id, user_id=current_user.id).first()
 
 		if not todo_list:
 			api.abort(404, "Wrong To-Do List ID")
 
-		# delete the To-Do List information in the database
+		# delete the To-Do List in the database
 		db.session.delete(todo_list)
 		db.session.commit()
 

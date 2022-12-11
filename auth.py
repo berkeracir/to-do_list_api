@@ -14,13 +14,14 @@ user_api_model = api.model('User', {
 })
 
 change_password_api_model = api.model('User Change Password', {
+	'username': fields.String(required=True, description="Username", default="username"),
 	'password': fields.String(required=True, description="User password", default="password"),
 	'new_password': fields.String(required=True, description="User new password", default="new_password")
 })	# TODO: Should parameters be used? 
 
 @api.route('/login')
 class Login(Resource):
-	'''Login'''
+	'''User authorization with signup, login, logout and change password abilities'''
 
 	@api.expect(user_api_model)
 	@api.response(200, "Login Successful")
@@ -31,6 +32,7 @@ class Login(Resource):
 		username = api.payload['username']
 		password = api.payload['password']
 
+		# if this returns a user, then the user with given username exists in database
 		user = User.query.filter_by(username=username).first()
 
 		# check if the user actually exists and if user exists, take the user-supplied password, hash it, and compare it to the hashed password in the database
@@ -59,7 +61,8 @@ class SignUp(Resource):
 		if not username:	# if username field is empty, redirect back to signup page so user can try again
 			api.abort(404, "Username cannot be empty!")
 
-		user = User.query.filter_by(username=username).first()	# if this returns a user, then the username already exists in database
+		# if this returns a user, then the username already exists in database
+		user = User.query.filter_by(username=username).first()
 
 		if user:	# if a user is found, redirect back to signup page so user can try again
 			api.abort(404, "Username exists!")
@@ -81,16 +84,17 @@ class ChangePassword(Resource):
 	@api.expect(change_password_api_model)
 	@api.response(200, "Password Changed Successfully")
 	@api.response(401, "Unauthorized")
-	@api.response(404, "Wrong password!")
+	@api.response(404, "Wrong Username/Password")
 	@login_required
 	def put(self):
 		'''Changes authorized user's password'''
 
+		username = api.payload['username']
 		password = api.payload['password']
 		new_password = api.payload['new_password']
 		
 		# take the user-supplied password, hash it, and compare it to the hashed password in the database
-		if not check_password_hash(current_user.password, password):
+		if current_user.username != username or not check_password_hash(current_user.password, password):
 			api.abort(404, "Wrong password!")
 
 		# change the password

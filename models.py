@@ -23,7 +23,7 @@ class List(db.Model):
     name = db.Column(db.String(100), nullable=False)
     created_at = db.Column(db.DateTime(timezone=True), server_default=func.now())
 
-    todo_list_items = db.relationship('Item', backref='todolist', lazy=True)
+    items = db.relationship('Item', backref='list', lazy=True)
 
     def __repr__(self) -> str:
         return f"<To-Do List| id={self.id} user_id={self.user_id} name=\"{self.name}\" created_at=\"{self.created_at}\">"
@@ -42,3 +42,6 @@ class Item(db.Model):
 
     def __repr__(self) -> str:
         return f"<To-Do List Item| id={self.id} user_id={self.user_id} todo_list_id={self.todo_list_id} text=\"{self.text}\" completed={self.completed} created_at=\"{self.created_at}\">"
+
+    def serialize(self) -> dict:
+        return {'id': self.id, 'todo_list_id': self.todo_list_id, 'text': self.text, 'completed': self.completed, 'created_at': self.created_at}
