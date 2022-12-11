@@ -1,11 +1,15 @@
 import os
+import secrets
 
 from flask import Flask
+from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from flask_restx import Api
 from werkzeug.middleware.proxy_fix import ProxyFix
 
+
+basedir = os.path.abspath(os.path.dirname(__file__))
 
 # init SQLAlchemy so we can use it later in our models
 db = SQLAlchemy()
@@ -20,17 +24,17 @@ api = Api(app,
 	contact_email='berkeracir159@gmail.com'
 )
 
-app.config['SECRET_KEY'] = 'super-duper-secret-key'	# TODO
-basedir = os.path.abspath(os.path.dirname(__file__))
+app.config['SECRET_KEY'] = secrets.token_urlsafe(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir, 'db.sqlite3')
-
-db.init_app(app)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+ 
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 login_manager = LoginManager()
 login_manager.init_app(app)
 
 import models
-
 with app.app_context():
 	db.create_all()
 
