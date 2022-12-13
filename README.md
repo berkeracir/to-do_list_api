@@ -14,16 +14,28 @@ chmod +x ./venv/bin/activate
 source ./venv/bin/activate
 ```
 
+Requirements:
+
+* **Python** version ``3.8.10`
+* **Flask** version `2.2.2`
+* **Flask-Login** version `0.6.2`
+* **Flask-Migrate** version `4.0.0`
+* **flask-restx** version `1.0.3`
+* **Flask-SQLAlchemy** version `3.0.2`
+
 Install dependencies while virtual environment is active:
 
 ```
+# Install versions according to requirements
+pip install -r requirements.txt
+
+# or (This might cause version problems)
 pip install flask flask_sqlalchemy flask-migrate flask-restx flask_login
 ```
 
 How to run (while virtual environment is active):
 
 ```
-#flask --app .\main.py db init
 flask --app .\main.py run
 ```
 

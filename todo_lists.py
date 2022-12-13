@@ -9,7 +9,7 @@ api = Namespace(name="todo_lists", description="Management of To-Do Lists")
 
 api_model = api.model('To-Do List', {
 	'id': fields.Integer(readonly=True, description="id"),
-	'name': fields.String(required=True, description="Name"),
+	'name': fields.String(required=True, description="Name/Title of the To-Do List"),
 	'created_at': fields.DateTime(readonly=True, description="Creation Date")
 })
 
